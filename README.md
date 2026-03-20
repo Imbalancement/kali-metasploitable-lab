@@ -1,22 +1,23 @@
-# 🔐 Kali Linux & Metasploitable Lab
+# 🔐 Kali Linux & Metasploitable Penetration Testing Lab
 
-> 🚀 Hands-on penetration testing lab simulating real-world attack scenarios using Kali Linux and Metasploitable2.
+> 🚀 Hands-on cybersecurity lab simulating a real-world internal penetration test using Kali Linux and Metasploitable2.
 
 ---
 
 ## 👨‍💻 About This Project
 
-This is one of my first hands-on cybersecurity labs where I simulated an internal network attack.
+This project documents a full penetration testing workflow conducted in a controlled virtual lab environment.
 
-The goal was to:
+The objective was to:
 - Discover services on a target machine
 - Identify vulnerabilities
 - Exploit them using real tools
 - Gain root-level access
+- Validate system compromise
 
 ---
 
-## 🖥️ Lab Setup
+## 🖥️ Lab Environment
 
 | Role       | Machine           |
 |------------|------------------|
@@ -29,16 +30,35 @@ The goal was to:
 
 ## 🛠️ Tools Used
 
-- Nmap (network scanning)
+- Nmap (network scanning & enumeration)
 - Metasploit Framework (exploitation)
 - Linux CLI
 - VirtualBox
 
 ---
 
-## 🔍 Phase 1: Reconnaissance
+# 🔍 Phase 1: Reconnaissance
 
-I scanned the target machine to identify open ports and services.
+The first step was identifying active hosts and confirming connectivity.
 
+### Command:
 ```bash
+ping 192.168.56.102
+🔎 Phase 2: Scanning & Enumeration
+
+I performed service and version detection using Nmap:
+
 nmap -sV 192.168.56.102
+Key Findings :
+
+FTP → vsftpd 2.3.4 (vulnerable)
+
+SSH → OpenSSH 4.7p1
+
+Samba → ports 139 / 445
+
+HTTP → Apache 2.2.8
+
+MySQL & PostgreSQL services exposed
+
+These results revealed multiple potential attack vectors.
